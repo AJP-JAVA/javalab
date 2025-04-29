@@ -1,0 +1,33 @@
+package TEETC1234;
+import java.applet.Applet;
+import java.awt.*;
+import java.awt.event.*;
+
+public class EXP1 extends Applet implements KeyListener{
+	String message = " ";
+	String keyinfo = " ";
+	public void init() {
+		addKeyListener(this);
+		requestFocus();
+	}
+	public void keyPressed(KeyEvent e) {
+		message= "keypressed : ";
+		keyinfo =  " key " + KeyEvent.getKeyText(e.getKeyCode());
+		repaint();
+	}
+	public void KeyReleased(KeyEvent e) {
+		message = " key released : ";
+		keyinfo = " key : " + KeyEvent.getKeyText(e.getKeyCode());
+		repaint();
+	}
+	public void keyTyped(KeyEvent e) {
+		message = " key typed : ";
+		keyinfo = "key " + e.getKeyCode();
+		repaint();
+	}
+	public void paint(Graphics g) {
+		g.drawString(message, 20,50);
+		g.drawString(keyinfo, 20,80);
+
+	}
+}

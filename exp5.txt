@@ -1,0 +1,81 @@
+pandndrliome server : 
+package TEETC1234;
+import java.rmi.*; 
+
+import java.rmi.registry.LocateRegistry; 
+import java.rmi.registry.Registry; 
+public class PalindromeServer { 
+public static void main(String[] args) throws Exception{ 
+Registry reg = LocateRegistry.createRegistry(7000); 
+PalindromeInterface obj = new PalindromeClass();  
+reg.bind("XYZ", obj); 
+System.out.println("Server is running.. "); 
+ } }
+
+
+interface : 
+package TEETC1234;
+
+import java.rmi.Remote; 
+import java.rmi.RemoteException; 
+
+public interface PalindromeInterface extends Remote{ 
+public String palindromeCheck(String s) throws RemoteException;
+
+}
+
+
+
+
+
+classs: 
+package TEETC1234;
+
+
+
+
+import java.rmi.*; 
+import java.rmi.server.*; 
+public class PalindromeClass extends UnicastRemoteObject implements Remote, 
+PalindromeInterface{ 
+PalindromeClass() throws RemoteException{ 
+super(); 
+} 
+public String palindromeCheck(String s) { 
+String rev = ""; 
+for (int i = s.length()-1; i>=0; i--) { 
+rev += s.charAt(i); 
+} 
+if (s.equals(rev)) { 
+String k = "The word " + s + " is a palindrome !"; 
+return k; 
+} 
+else { 
+String k = "The word " + s + " is not a palindrome !"; 
+return k; 
+} }  }
+
+
+
+
+client : 
+package TEETC1234;
+
+import java.rmi.*; 
+import java.rmi.registry.*; 
+public class PalindromeClient { 
+public static void main(String[] args) throws Exception{ 
+PalindromeInterface obj1 = (PalindromeInterface)Naming.lookup("rmi://localhost:5000/XYZ"); 
+  String ans1 = obj1.palindromeCheck("HELLO"); 
+  String ans2 = obj1.palindromeCheck("RACECAR"); 
+  String ans3 = obj1.palindromeCheck("MADAM"); 
+  String ans4 = obj1.palindromeCheck("NAYAN"); 
+  String ans5 = obj1.palindromeCheck("ANCHAL"); 
+  System.out.println(ans1); 
+  System.out.println(ans2); 
+  System.out.println(ans3); 
+  System.out.println(ans4); 
+  System.out.println(ans5); 
+  } 
+  }
+

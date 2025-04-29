@@ -1,0 +1,51 @@
+exp 7 html : 
+	<!DOCTYPE html>
+	<html>
+	<head>
+	<meta charset="ISO-8859-1">
+	<title>Insert title here</title>
+	</head>
+	<body>
+			
+			<h2>login detail : </h2>
+			<form action="EXP7"  method="post"  >
+				username : <input type= " text" name="username" requried > <br>
+				password : <input type ="password" name = "password " requried > <br>
+				<input type = "submit" value="login">
+			</form>
+	</body>
+	</html>
+
+exp 7 servlet : 
+package TEETC1234;
+
+import java.io.IOException;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import java.io.PrintWriter;
+
+@WebServlet("/EXP7")
+public class EXP7 extends HttpServlet {
+	private static final long serialVersionUID = 1L;
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
+		
+		   response.setContentType("Text/html"); 
+	        PrintWriter out = response.getWriter(); 
+	         
+			String username = request.getParameter("username");
+			String password = request.getParameter("password");
+			
+			 	out.println("<html><body>"); 
+		        out.println("<h2>Login Details</h2>"); 
+		        out.println("<p>Username: " + username + "</p>"); 
+		        out.println("<p>Password: " + password + "</p>"); 
+		        out.println("</body></html>"); 
+		        out.close();
+	}
+
+}

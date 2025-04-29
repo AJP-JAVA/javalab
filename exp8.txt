@@ -1,0 +1,63 @@
+exp 8 update : 
+package TEETC1234;
+
+import java.sql.Connection; 
+import java.sql.DriverManager; 
+import java.sql.PreparedStatement; 
+import java.sql.ResultSet; 
+import java.sql.Statement; 
+ 
+public class exp8a { 
+ 
+public static void main(String[] args) { 
+try{   
+	Class.forName("com.mysql.jdbc.Driver");   
+	Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/test?characterEncoding=latin1","root","root");   
+	PreparedStatement stmt = con.prepareStatement("update student set  city=? where name=?"); 
+	stmt.setString(1,"goa"); 
+	stmt.setString(2,"vaibhav");  
+	int i = stmt.executeUpdate(); 
+	 
+	System.out.println( i + "Records updated"); 
+	con.close();   
+} 
+catch(Exception e){  
+System.out.println(e); 
+}   
+} 
+ 
+}
+
+
+
+
+exp 8 deleted : 
+
+
+
+package TEETC1234;
+import java.sql.Connection; 
+import java.sql.DriverManager; 
+import java.sql.PreparedStatement; 
+import java.sql.ResultSet; 
+import java.sql.Statement; 
+ 
+public class exp8b { 
+ 
+public static void main(String[] args) { 
+try{   
+Class.forName("com.mysql.jdbc.Driver");   
+Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/test?characterEncoding=latin1","root","root");   
+PreparedStatement stmt = con.prepareStatement("delete from student where name=? "); 
+stmt.setString(1,"vaibhav"); 
+int i = stmt.executeUpdate(); 
+ 
+System.out.println( i + "Records deleted "); 
+con.close();   
+} 
+catch(Exception e){  
+System.out.println(e); 
+}   
+} 
+ 
+}
