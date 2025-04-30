@@ -1,0 +1,19 @@
+package TEETC1234;
+import java.io.*;
+
+import java.net.*;
+import java.util.*;
+
+public class exp6{
+	public static void main(String[]args) {
+		try {
+//			InetAddress ip = InetAddress.getByName("dypcoeakurdi.ac.in");\
+			InetAddress ip = InetAddress.getByName("www.googe.com");
+			System.out.println("host name "+ ip.getHostName() );
+			System.out.println("ip addresss" + ip.getHostAddress() );
+		}
+		catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+}
